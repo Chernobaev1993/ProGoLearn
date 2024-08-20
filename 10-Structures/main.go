@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"sort"
+	"strings"
 )
 
 func main() {
@@ -54,6 +56,13 @@ func main() {
 	calcTax(p1)
 	fmt.Println(p1.price)
 	fmt.Println(*p1)
+
+	fmt.Println(DNAtoRNA("DCAUURWEWUFEETTTTHHJTRLTLTJ"))
+
+	// arrays
+	ar1 := []int{11, 2, 33, 4, 5} 
+	ar2 := []int{4, 72, 8, 9, 10}
+	fmt.Println(myArrayFunc(ar1, ar2))
 }
 
 type Product struct {
@@ -70,4 +79,32 @@ func calcTax(product *Product) {
 	if product.price > 100 {
 		product.price += product.price * 0.2
 	}
+}
+
+func DNAtoRNA (dna string) string {
+	str := []string{}
+	for _, val := range dna {
+		temp := string(val)
+		if string(val) == "T" {
+			temp = "U"
+		}
+		str = append(str, temp)
+	}
+	str2 := strings.Join(str, "")
+	return str2
+}
+
+func myArrayFunc(arr1, arr2 []int) []int {
+	
+	arr1 = append(arr1, arr2...)
+	sort.Ints(arr1)
+	myArr := make([]int, 0, len(arr1))
+	myArr = append(myArr, arr1[0])
+	for i := 1; i < len(arr1); i++ {
+		if arr1[i] <= arr1[i - 1] {
+			continue
+		}
+		myArr = append(myArr, arr1[i])
+	}
+ 	return myArr
 }
