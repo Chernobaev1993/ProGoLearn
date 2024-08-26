@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 type Resume struct {
@@ -19,24 +18,5 @@ type Vacancy struct {
 }
 
 func main() {
-	resume := &Resume{
-		Language: "Go",
-		YearsOfExperience: 2,
-		YearsOfEducation: 5,
-	}
-
-	vacancies := []*Vacancy{
-		{"Go", "Nike", 4, 6},
-		{"Java", "Yandex", 1, 2},
-		{"Go", "Sber", 2, 1},
-	}
-
+	fmt.Println("Rus")
 }
-
-func applyForVacanciesFn(r *Resume, v []*Vacancy, applyFunc func(r *Resume, v []*Vacancy) (invite []*Vacancy)) {
-	var invite []*Vacancy
-	timeStart := time.Now()
-
-	invite = applyFunc(r, v)
-	fmt.Printf("ВАС ПРИГЛАСИЛИ ")
-} 
